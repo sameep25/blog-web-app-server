@@ -4,12 +4,11 @@ import { GridFsStorage } from "multer-gridfs-storage";
 
 import dotenv from "dotenv";
 dotenv.config();
-const username = process.env.DB_USERNAME;
-const password = process.env.DB_PASSWORD;
+const URL = process.env.MONGO_URI ;
 
 const storage = new GridFsStorage({
   //takes 3 args
-  url: `mongodb+srv://${username}:${password}@blog-web.loigo.mongodb.net/?retryWrites=true&w=majority`, //1st arg : db url
+  url: URL , //1st arg : db url
   options: { useNewUrlParser: true }, //2nd arg : options
   file: (req, file) => {
     //3rd arg : file(function) => takes arg as req and file
